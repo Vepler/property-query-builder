@@ -9,7 +9,8 @@
     "esModuleInterop": true,              // Allow default imports from modules with no default export
     "moduleResolution": "node",           // Module resolution strategy
     "resolveJsonModule": true,            // Allows importing JSON modules
-    "sourceMap": true                     // Generate source maps
+    "sourceMap": true,                     // Generate source maps,
+    "declaration": true
   },
 
   "types": ["node", "jest"],

@@ -1,65 +1,4 @@
-/**
- * Supported comparators for query conditions.
- */
-export type Comparator =
-  | 'eq'
-  | 'ne'
-  | 'gt'
-  | 'gte'
-  | 'lt'
-  | 'lte'
-  | 'in'
-  | 'nin'
-  | 'contains'
-  | 'startswith'
-  | 'endswith';
-
-/**
- * Supported fields for query conditions.
- */
-type SupportedFields =
-  | 'currentSaleListingPrice'
-  | 'currentRentalListingPrice'
-  | 'salePriceReductionPct'
-  | 'salePriceReductionAmt'
-  | 'propertyType'
-  | 'saleListingStatus'
-  | 'rentalListingStatus'
-  | 'daysOnMarketForSale'
-  | 'daysOnMarketForRent'
-  | 'beds'
-  | 'baths';
-
-/**
- * Represents a single query condition.
- */
-export type Condition = {
-  field: SupportedFields;
-  comparator: Comparator;
-  value: string | number | boolean | (string | number | boolean)[];
-};
-
-/**
- * Represents a group of conditions.
- */
-export type Group = {
-  conditions: Condition[];
-};
-
-/**
- * Represents a query group with an operator and nested groups.
- */
-export type QueryGroup = {
-  operator: 'AND' | 'OR';
-  groups: Group[];
-};
-
-/**
- * Represents the overall query structure.
- */
-export type Query = {
-  query: QueryGroup[];
-};
+import { Condition, Operator, Query, QueryGroup } from './query-builder-types';
 
 /**
  * QueryBuilder class for constructing and manipulating queries.
@@ -74,7 +13,7 @@ export class QueryBuilder {
    * @param operator The operator for the new query group ('AND' or 'OR').
    * @returns The ID of the newly added group.
    */
-  public addGroup(operator: 'AND' | 'OR'): string {
+  public addGroup(operator: Operator): string {
     const groupId = this.generateGroupId();
     const queryGroup: QueryGroup = {
       operator,

@@ -1,4 +1,5 @@
-import { QueryBuilder, Query, Condition } from '../src';
+import { QueryBuilder } from '../src';
+import { Query, Condition } from '../src/query-builder-types';
 
 describe('QueryBuilder', () => {
   let queryBuilder: QueryBuilder;

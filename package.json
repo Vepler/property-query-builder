@@ -1,6 +1,6 @@
 {
   "name": "@vepler/property-query-builder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The Propbar Property Query SDK is a TypeScript library that enables the easy construction of complex queries for searching and filtering data. It offers a fluent and intuitive API for building queries with multiple groups and conditions.",
   "main": "dist/index.js",
   "repository": "git remote add origin git@github.com:Vepler/property-query-builder.git",

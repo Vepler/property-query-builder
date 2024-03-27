@@ -4,6 +4,7 @@ The Propbar Property Query SDK is a TypeScript library that enables the easy con
 
 ## Todo
 - [] Add documentation for loadQuery method
+- [] Add documentation for getUniqueFilterFields method
 
 ## Installation
 

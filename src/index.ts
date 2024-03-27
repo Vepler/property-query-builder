@@ -131,6 +131,28 @@ export class QueryBuilder {
       }))
     return this;
   }
+  
+  /**
+   * Retrieves an array of unique filter fields used in the current query.
+   * @returns An array of unique filter fields.
+   */
+  public getUniqueFilterFields(): string[] {
+    const filterFields: Set<string> = new Set();
+
+    const scanGroup = (group: QueryGroup) => {
+      group.groups.forEach((subGroup) => {
+        subGroup.conditions.forEach((condition) => {
+          filterFields.add(condition.field);
+        });
+      });
+    };
+
+    this.query.forEach((queryGroup) => {
+      scanGroup(queryGroup);
+    });
+
+    return Array.from(filterFields);
+  }
 
   /**
    * Retrieves the constructed query.

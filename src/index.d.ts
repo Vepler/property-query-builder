@@ -16,6 +16,7 @@ declare module '@vepler/property-query-builder' {
     public listGroupIds(): string[];
     public loadQuery(rawQuery: Query): QueryBuilder;
     public getQuery(): Query;
+    public getUniqueFilterFields(): string[];
 
     private generateGroupId(): string;
   }

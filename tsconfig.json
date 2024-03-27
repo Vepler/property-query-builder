@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",                      // Target ECMAScript version
+    "module": "commonjs",                 // Output module format (for Node.js)
+    "lib": ["es6", "dom"],                // Available library files
+    "outDir": "dist",                     // Output directory for compiled JavaScript files
+    "rootDir": "src",                     // Root directory of input files
+    "strict": true,                       // Enable strict type-checking
+    "esModuleInterop": true,              // Allow default imports from modules with no default export
+    "moduleResolution": "node",           // Module resolution strategy
+    "resolveJsonModule": true,            // Allows importing JSON modules
+    "sourceMap": true                     // Generate source maps
+  },
+
+  "types": ["node", "jest"],
+  "typeRoots": [
+    "./src/types",
+    "./node_modules/@types"
+  ],
+  "include": ["src/**/*.ts"],             // Files to include in compilation
+  "exclude": ["node_modules", "dist"]     // Files to exclude from compilation
+}

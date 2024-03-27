@@ -22,7 +22,7 @@ This example illustrates how to add groups, add conditions, update conditions, r
 
 
 ```typescript
-import { QueryBuilder } from 'query-builder-sdk';
+import { QueryBuilder } from '@vepler/property-query-builder';
 
 const queryBuilder = new QueryBuilder();
 
@@ -91,7 +91,7 @@ console.log(JSON.stringify(query, null, 2));
 To use the Propbar Property Query SDK in your TypeScript project, import the `QueryBuilder` class:
 
 ```typescript
-import { QueryBuilder } from 'query-builder-sdk';
+import { QueryBuilder } from '@vepler/property-query-builder';
 ```
 
 ## Creating a Query Builder Instance

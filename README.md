@@ -2,6 +2,9 @@
 
 The Propbar Property Query SDK is a TypeScript library that enables the easy construction of complex queries for searching and filtering data. It offers a fluent and intuitive API for building queries with multiple groups and conditions.
 
+## Todo
+- [] Add documentation for loadQuery method
+
 ## Installation
 
 To install the Propbar Property Query SDK, you can use npm:

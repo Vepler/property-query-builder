@@ -4,9 +4,7 @@ import { Condition, Operator, Query, QueryGroup } from './query-builder-types';
  * QueryBuilder class for constructing and manipulating queries.
  */
 export class QueryBuilder {
-  private query: Query = {
-    query: [],
-  };
+  private query: Query = []
 
   /**
    * Adds a new query group with the specified operator.
@@ -19,7 +17,7 @@ export class QueryBuilder {
       operator,
       groups: [],
     };
-    this.query.query.push(queryGroup);
+    this.query.push(queryGroup);
     return groupId;
   }
 
@@ -29,7 +27,7 @@ export class QueryBuilder {
    * @returns The QueryBuilder instance for chaining.
    */
   public removeGroup(groupId: string): QueryBuilder {
-    this.query.query = this.query.query.filter(
+    this.query = this.query.filter(
       (queryGroup, index) => index !== parseInt(groupId, 10)
     );
     return this;
@@ -42,7 +40,7 @@ export class QueryBuilder {
    * @returns The QueryBuilder instance for chaining.
    */
   public addCondition(groupId: string, condition: Condition): QueryBuilder {
-    const queryGroup = this.query.query[parseInt(groupId, 10)];
+    const queryGroup = this.query[parseInt(groupId, 10)];
     if (queryGroup) {
       queryGroup.groups.push({ conditions: [condition] });
     }
@@ -59,7 +57,7 @@ export class QueryBuilder {
     groupId: string,
     conditionIndex: number
   ): QueryBuilder {
-    const queryGroup = this.query.query[parseInt(groupId, 10)];
+    const queryGroup = this.query[parseInt(groupId, 10)];
     if (queryGroup) {
       queryGroup.groups = queryGroup.groups.filter(
         (group, index) => index !== conditionIndex
@@ -80,7 +78,7 @@ export class QueryBuilder {
     conditionIndex: number,
     condition: Condition
   ): QueryBuilder {
-    const queryGroup = this.query.query[parseInt(groupId, 10)];
+    const queryGroup = this.query[parseInt(groupId, 10)];
     if (queryGroup) {
       queryGroup.groups[conditionIndex] = { conditions: [condition] };
     }
@@ -99,7 +97,7 @@ export class QueryBuilder {
     operator: 'AND' | 'OR',
     conditions: Condition[]
   ): QueryBuilder {
-    const queryGroup = this.query.query[parseInt(groupId, 10)];
+    const queryGroup = this.query[parseInt(groupId, 10)];
     if (queryGroup) {
       queryGroup.operator = operator;
       queryGroup.groups = conditions.map((condition) => ({
@@ -114,7 +112,7 @@ export class QueryBuilder {
    * Retrieves the group IDs for the current query.
    */
   public listGroupIds(): string[] {
-    return this.query.query.map((_, index) => index.toString());
+    return this.query.map((_, index) => index.toString());
   }
 
   /**
@@ -123,16 +121,14 @@ export class QueryBuilder {
    * @returns The QueryBuilder instance for chaining.
    */
   public loadQuery(rawQuery: Query): QueryBuilder {
-    this.query = {
-      query: rawQuery.query.map((queryGroup) => ({
+    this.query = rawQuery.map((queryGroup) => ({
         operator: queryGroup.operator,
         groups: queryGroup.groups.map((group) => ({
           conditions: group.conditions.map((condition) => ({
             ...condition,
           })),
         })),
-      })),
-    };
+      }))
     return this;
   }
 
@@ -149,6 +145,6 @@ export class QueryBuilder {
    * @returns The generated group ID.
    */
   private generateGroupId(): string {
-    return this.query.query.length.toString();
+    return this.query.length.toString();
   }
 }

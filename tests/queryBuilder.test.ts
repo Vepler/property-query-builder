@@ -117,14 +117,13 @@ describe('QueryBuilder', () => {
             value: 100000,
         };
         queryBuilder.addCondition(groupId, condition);
-        const query: Query = {
-            query: [
+        const query: Query = [
                 {
                     operator: 'AND',
                     groups: [{ conditions: [condition] }],
                 },
-            ],
-        };
+            ];
+
         expect(queryBuilder.getQuery()).toEqual(query);
     });
 });

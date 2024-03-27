@@ -28,6 +28,4 @@ export type QueryGroup = {
   groups: Group[];
 };
 
-export type Query = {
-  query: QueryGroup[];
-};
+export type Query = QueryGroup[];

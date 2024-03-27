@@ -170,6 +170,33 @@ export class QueryBuilder {
     return this;
   }
 
+
+  /**
+   * Retrieves the group IDs for the current query.
+   */
+  public listGroupIds(): string[] {
+    return this.query.query.map((_, index) => index.toString());
+  }
+
+  /**
+   * Loads a raw query into the current state, generating new group IDs and condition IDs.
+   * @param rawQuery The raw query to load.
+   * @returns The QueryBuilder instance for chaining.
+   */
+  public loadQuery(rawQuery: Query): QueryBuilder {
+    this.query = {
+      query: rawQuery.query.map((queryGroup) => ({
+        operator: queryGroup.operator,
+        groups: queryGroup.groups.map((group) => ({
+          conditions: group.conditions.map((condition) => ({
+            ...condition,
+          })),
+        })),
+      })),
+    };
+    return this;
+  }
+
   /**
    * Retrieves the constructed query.
    * @returns The constructed query.
